@@ -54,7 +54,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/web-ridge/react-native-paper-tabs.git"
+    "url": "git+https://github.com/locatick/react-native-paper-tabs.git"
   },
   "author": "Richard Lindhout <richard.lindhout@webridge.nl> (https://www.webridge.nl)",
   "license": "MIT",
