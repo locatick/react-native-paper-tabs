@@ -107,11 +107,6 @@
   "workspaces": [
     "example"
   ],
-   "bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": ["commonjs", "module", "typescript"]
-  },
   "packageManager": "yarn@3.6.1",
   "jest": {
     "preset": "react-native",
