@@ -43,7 +43,7 @@
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli lib",
-    "prepare": "bob build",
+    "prepare": "yarn build",
     "release": "release-it --ci",
     "build-example": "cd example && yarn web:build"
   },
