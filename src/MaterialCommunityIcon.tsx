@@ -4,7 +4,7 @@ let MaterialCommunityIcons: any;
 
 try {
   MaterialCommunityIcons = Animated.createAnimatedComponent(
-    require('react-native-vector-icons/MaterialCommunityIcons').default
+    require('@react-native-vector-icons/material-design-icons').default
   );
 } catch (_e: any) {
   const e = _e;
