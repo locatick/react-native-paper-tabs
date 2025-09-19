@@ -42,9 +42,10 @@
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "clean": "del-cli lib",
-    "prepare": "bob build",
-    "build": "rimraf lib && tsc -p tsconfig.json", 
+    "clean": "rimraf lib",
+    "build": "bob build",
+    "prepare": "yarn build",
+  
     "release": "release-it --ci",
     "build-example": "cd example && yarn web:build"
   },
@@ -67,7 +68,10 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "color": "^4.2.3"
+    "color": "^4.2.3",
+    "react-native-builder-bob": "^0.23.0",
+    "typescript": "^5.5.0",
+    "rimraf": "^6.0.1"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",
@@ -87,11 +91,9 @@
     "prettier": "^3.0.3",
     "react": "18.3.1",
     "react-native": "0.76.5",
-    "react-native-builder-bob": "^0.35.2",
     "react-native-pager-view": "^6.2.0",
     "react-native-paper": "^5.9.1",
-    "release-it": "^17.10.0",
-    "typescript": "^5.2.2"
+    "release-it": "^17.10.0"
   },
   "resolutions": {
     "@types/react": "^18.2.44"
@@ -105,6 +107,11 @@
   "workspaces": [
     "example"
   ],
+   "bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": ["commonjs", "module", "typescript"]
+  },
   "packageManager": "yarn@3.6.1",
   "jest": {
     "preset": "react-native",
