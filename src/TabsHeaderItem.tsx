@@ -69,10 +69,21 @@ export default function TabsHeaderItem({
     childrenCount,
   });
 
-  const badgeIsFilled =
-    tab.props.badge !== undefined && tab.props.badge !== null;
+  const badgeProp = tab.props.badge;
+  const badgeConfig =
+    badgeProp &&
+    typeof badgeProp === 'object' &&
+    !React.isValidElement(badgeProp)
+      ? badgeProp
+      : undefined;
+  const badgeValue =
+    badgeConfig && 'value' in badgeConfig ? badgeConfig.value : badgeProp;
 
-  const badgeWithoutContent = typeof tab.props.badge === 'boolean';
+  const badgeIsFilled = badgeValue !== undefined && badgeValue !== null;
+
+  const badgeWithoutContent = typeof badgeValue === 'boolean';
+  const badgeStyle = badgeConfig?.style;
+  const badgeTextStyle = badgeConfig?.textStyle;
 
   return (
     <View
@@ -146,17 +157,30 @@ export default function TabsHeaderItem({
                 styles.badgeContainer,
                 {
                   right:
-                    (badgeWithoutContent
-                      ? String(tab.props.badge).length * -2
-                      : 0) - 2,
+                    (badgeWithoutContent ? String(badgeValue).length * -2 : 0) -
+                    2,
                 },
               ]}
             >
               {badgeWithoutContent ? (
-                <Badge visible={true} size={8} theme={theme} />
+                <Badge
+                  visible={true}
+                  size={8}
+                  theme={theme}
+                  style={badgeStyle}
+                />
               ) : (
-                <Badge visible={true} size={16} theme={theme}>
-                  {tab.props.badge as any}
+                <Badge
+                  visible={true}
+                  size={16}
+                  theme={theme}
+                  style={badgeStyle}
+                >
+                  {badgeTextStyle ? (
+                    <Text style={badgeTextStyle}>{badgeValue as any}</Text>
+                  ) : (
+                    (badgeValue as any)
+                  )}
                 </Badge>
               )}
             </View>
